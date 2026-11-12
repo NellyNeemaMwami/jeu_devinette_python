@@ -1,15 +1,22 @@
 import random
-x = random.randint(1, 100)
-tentatives = 0
-a = int(input('Saisissez un nombre entre 1 et 100 ' ))
-while (a != x) : 
-    tentatives += 1
-    print ('réessayer vous y êtes presque ')
-    a = int (input ('saisissez un autre nombre :'))
-    if (a > x ) :
-        print (' Votre nombre est supérieur au nombre attendu , essayez encore ')
-    elif (a < x ) :
-        print (' Votre nombre est inférieur au nombre attendu , essayez encore')
-    else :
-        print (' c\'est parfait , vous l\'avez fait  ')
-print('Bravo ! Vous avez trouvé le nombre en ', tentatives, 'tentatives.')
+def jeu_devinette(a):
+    nombre_magique = random.randint(1, 100)
+    tentatives = 0
+    while (a != nombre_magique) : 
+        tentatives += 1
+        if tentatives == 20:
+            print ('Vous avez dépassé le nombre de tentatives autorisées')
+            print ('Le nombre magique était : ', nombre_magique)
+        if (a > nombre_magique ) :
+            print (' Votre nombre est supérieur au nombre attendu , essayez encore ')
+            a = int(input('Vous pouvez essayer à nouveau: ' ))
+        elif (a < nombre_magique ) :
+            print (' Votre nombre est inférieur au nombre attendu , essayez encore')
+            a = int(input('Vous pouvez essayer à nouveau: ' ))
+    if (a == nombre_magique) :
+        print (' Félicitations , vous avez trouvé le nombre magique en ', tentatives, 'tentatives')
+        print ('Le maximum de tentatives autorisées était de 20')
+        print ('Au plaisir de vous revoir pour une nouvelle partie')
+    return tentatives
+b =int (input('C\'est parti pour une nouvelle aventure, essayez de deviner le nombre entre 1 et 100: '))
+jeu_devinette(b)
